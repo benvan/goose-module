@@ -1,0 +1,35 @@
+{
+  "name": "goose-module",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "babel src --out-dir dist",
+    "prepublishOnly": "rm -rf dist && yarn run build"
+  },
+  "author": "Ben van Enckevort",
+  "license": "ISC",
+  "peerDependencies": {
+    "react": ">=15.0.1",
+    "react-dom": ">=15.0.1",
+		"prop-types": ">=15.0.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.2.0",
+    "@babel/plugin-proposal-class-properties": "^7.2.3",
+    "@babel/plugin-transform-runtime": "^7.2.0",
+    "@babel/preset-env": "^7.2.0",
+    "@babel/runtime": "^7.2.0",
+    "mocha": "^5.2.0",
+    "react": ">=15.0.1",
+    "react-dom": ">=15.0.1",
+    "redux-saga": "^0.16.2",
+    "webpack": "^4.27.1",
+    "webpack-cli": "^3.1.2"
+  },
+  "dependencies": {
+    "fn-update": "^1.11.0"
+  }
+}
