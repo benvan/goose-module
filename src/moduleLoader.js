@@ -37,7 +37,6 @@ export const gooseMiddleware = store => next => action => {
   if (action.type !== LOAD_MODULE) {
     return next(action)
   }
-
 }
 
 
@@ -48,15 +47,16 @@ function* doLoadModule(Module,sagaMiddleware,replaceReducer){
     if (!Module.key) throw Error("You must provide a (unique) key for your module!")
   }
 
-
   if (!isLoaded(Module)){
     log(`Loading module "${Module.key}"`)
     _loadedModules.add(Module)
     if (Module.dependencies && Module.dependencies.length){
-      log(`Loading dependencies ("${Module.key}" -> [${Module.dependencies.map(m => `"${m.key}"`)}])`)
+      log(`Ensuring dependencies loaded ("${Module.key}" -> [${Module.dependencies.map(m => `"${m.key}"`)}])`)
 
       for (const d of Module.dependencies){
-        yield put(loadModule(d))
+        if (!d[IS_LOADED]){
+          yield put(loadModule(d))
+        }
       }
 
       // Wait for dependencies to load
@@ -74,8 +74,8 @@ function* doLoadModule(Module,sagaMiddleware,replaceReducer){
       }
     })
     replaceReducer(chainReducers(newReducers))
-    sagaMiddleware.run(Module.saga)
     yield put(initModule(Module))
+    sagaMiddleware.run(Module.saga)
   }
 }
 
