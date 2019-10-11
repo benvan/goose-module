@@ -1,7 +1,6 @@
 import { put, takeEvery, all, take } from 'redux-saga/effects'
 import {updateAt} from 'fn-update'
 
-
 export const LOAD_MODULE = '@@goose/LOAD_MODULE'
 export const loadModule = (Module) => ({
   type: LOAD_MODULE,

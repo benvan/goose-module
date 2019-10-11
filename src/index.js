@@ -138,8 +138,7 @@ const ConnectedWithModuleWithContext = (Module, Component) => {
         return null
       }
     }
-    // We want to trigger this once, and as soon as possible.
-    UNSAFE_componentWillMount(...args){
+    componentDidMount(...args){
       const store = this.context.store
       const {moduleLoadObserved} = this.state
       
