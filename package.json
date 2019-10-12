@@ -1,5 +1,5 @@
 {
-  "name": "@metomic/goose-module",
+  "name": "goose-module",
   "version": "3.2.0",
   "description": "",
   "main": "lib/index.js",
